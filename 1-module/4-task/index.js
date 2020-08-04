@@ -5,13 +5,12 @@
  */
 function checkSpam(str) {
 
-  let c = str.toLowerCase().includes("xxx");
-  let d = str.toLowerCase().includes("1xbet");
+  let checkXXX = str.toLowerCase().includes("xxx");
+  let checkBookies = str.toLowerCase().includes("1xbet");
   
-  if (c === true || d === true) {
+  if (checkXXX === true || checkBookies === true) {
     return true;
-  } else {
-    return false;
-  }
+  } 
+  return false;
 }
 

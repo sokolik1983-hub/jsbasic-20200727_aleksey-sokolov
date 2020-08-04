@@ -12,9 +12,8 @@ function print(text) {
 function isValid(name) {
   if (name.length >= 4 && name.split(' ').length-1 === 0) {
     return true;
-  } else {
-    return false;
-  }
+  } 
+  return false;
 }
 
 function sayHello() {
