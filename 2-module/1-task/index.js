@@ -4,5 +4,11 @@
  * @returns {Number}
  */
 function sumSalary(salaries) {
-  // ваш код...
+  delete salaries["isPayed"];
+  let result = 0;
+  for(key in salaries) {
+  result += (~~(+salaries[key]));
+ };
+
+  return result;
 }
