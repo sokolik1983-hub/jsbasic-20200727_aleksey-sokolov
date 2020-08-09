@@ -4,5 +4,14 @@
  * @returns {{min:number, max:number}}  объект
  */
 function getMinMax(str) {
-  // ваш код...
+  let result = {};
+  let newMassive = [];
+  let abc = (str).split(/[\s,]+/);
+  for (keys of abc) {
+    newMassive.push(+keys);
+  }
+
+  result.min = Math.min.apply(null, newMassive.filter(Boolean));
+  result.max = Math.max.apply(null, newMassive.filter(Boolean));
+  return result;
 }
