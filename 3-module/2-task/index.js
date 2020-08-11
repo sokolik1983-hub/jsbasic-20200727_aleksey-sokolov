@@ -5,5 +5,11 @@
  * @returns {number[]}
  */
 function filterRange(arr, a, b) {
-  // ваш код...
+  let newMassive = [];
+  for (let filtered1 of arr) {
+    if (filtered1 >=a && filtered1 <=b) {
+      newMassive.push(filtered1)
+    }
+  } 
+  return newMassive;
 }

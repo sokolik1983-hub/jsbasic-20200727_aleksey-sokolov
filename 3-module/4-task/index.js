@@ -5,5 +5,15 @@
  * @returns {string}
  */
 function showSalary(users, age) {
-  // ваш код...
+  let newMassive = [];
+
+  for (keys of users) { 
+    if (keys.age <= age) {
+  
+      let result = (keys.name + ", " + keys.balance);
+      newMassive.push(result);
+    }
+  
+  }
+  return (newMassive.join('\n'));
 }
