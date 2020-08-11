@@ -2,13 +2,13 @@ let calculator = {
   
 };
 calculator.read = function (c,d) {
-  calculator.stNum = c;
-  calculator.ndNum = d;
-  calculator.sum = function () {
-  return (calculator.stNum+calculator.ndNum);
+  this.stNum = c;
+  this.ndNum = d;
+    this.sum = function () {
+  return (this.stNum+this.ndNum);
 };
-    calculator.mul = function () {
-  return (calculator.stNum*calculator.ndNum);
+    this.mul = function () {
+  return (this.stNum*this.ndNum);
 };
 }
 // НЕ УДАЛЯТЬ СТРОКУ, НУЖНА ДЛЯ ПРОВЕРКИ

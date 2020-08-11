@@ -7,12 +7,13 @@
 function showSalary(users, age) {
   let newMassive = [];
 
-for (keys of users) { 
-  if (keys.age <= age) {
-    let result = (keys.name + ", " + keys.balance + '\n');
-    newMassive.push(result);
-  }
+  for (keys of users) { 
+    if (keys.age <= age) {
   
-}
-return ((newMassive.join('')).substring(0, (newMassive.join('')).length - 1));
+      let result = (keys.name + ", " + keys.balance);
+      newMassive.push(result);
+    }
+  
+  }
+  return (newMassive.join('\n'));
 }
