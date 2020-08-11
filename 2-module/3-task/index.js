@@ -1,5 +1,5 @@
 let calculator = {
-  // ваш код
+  
 };
 calculator.read = function (c,d) {
   calculator.stNum = c;
