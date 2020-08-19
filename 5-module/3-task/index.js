@@ -16,7 +16,7 @@ let contInnerStart = 0;
   };
 
   leftBtn.addEventListener('click', () => {
-    contInner.style.translateX = contInnerStart + contWidth + "px";
+    contInner.style.transform = `translateX(${contInnerStart + contWidth}px)`;
     contInnerStart += contWidth;
     if(contInnerStart === 0) {
       leftBtn.style.display = 'none';
@@ -26,7 +26,7 @@ let contInnerStart = 0;
     }
   });
   rightBtn.addEventListener('click', () => {
-    contInner.style.translateX = contInnerStart - contWidth + "px";
+    contInner.style.transform = `translateX(${contInnerStart - contWidth}px)`;
     contInnerStart -= contWidth;
     if(contInnerStart < 0) {
       leftBtn.style.display = 'block';
