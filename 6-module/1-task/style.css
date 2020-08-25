@@ -1,6 +1,6 @@
-td {
+td, th {
     border: 1px solid black;
-    padding: 6px;
+    padding: 56px;
 }
 
 table { 
