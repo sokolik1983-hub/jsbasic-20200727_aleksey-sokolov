@@ -11,7 +11,7 @@ render(product) {
   this.price = card.price;
   this.name = card.name;
   this.id = card.id;
-
+console.log('11111');
   let elem = document.createElement('div');
   elem.innerHTML = `<div class="card__top">
   <img src="/assets/images/products/${this.image}" class="card__image" alt="product">
