@@ -33,7 +33,6 @@ export default class RibbonMenu {
     let scrollWidth = ribbonInner.scrollWidth;
     let contWidth = cont.scrollWidth;
     let toLeft = scrollWidth - contWidth;
-    console.log(scrollLeft,toLeft)
     if ( scrollLeft === 0) {
       leftBtn1.classList.remove('ribbon__arrow_visible'); 
     }
