@@ -23,13 +23,9 @@ export default class Modal {
       </div>`
 
     let modalTitle = modal.querySelector('.modal__title');
-    let modalBody = modal.querySelector('.modal__body');
     let closeBtn = modal.querySelector('.modal__close');
    
-    closeBtn.addEventListener('click', () =>{
-      modal.remove();
-      body.classList.remove('is-modal-open');
-    });
+    
 
     this.open = function() {
       body.append(modal);
@@ -42,14 +38,22 @@ export default class Modal {
     };
 
 
-    this.setBody = function(element) {
-      modalBody.innerHTML = element;
+    this.setBody = function(node) {
+      let modalBody = modal.querySelector('.modal__body');
+      modalBody.appendChild(node);
     }
-    
+    this.close = function() {
+      modal.remove();
+      body.classList.remove('is-modal-open');
+    }
+    closeBtn.onclick = this.close;
 
-
-    
-    
+    document.onkeydown = function (event) {
+      if (event.code === 'Escape'){
+      modal.remove();
+      body.classList.remove('is-modal-open');
+      }
+      
+    }
   }
-
 }

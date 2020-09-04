@@ -8,15 +8,15 @@ export default class RibbonMenu {
     this.categories = categories;
     let cont = document.createElement('div');
     cont.className = 'ribbon';
-    let leftBtn = `<button class="ribbon__arrow ribbon__arrow_left ribbon__arrow_visible">
+    let leftBtn = `<button class="ribbon__arrow ribbon__arrow_left">
     <img src="/assets/images/icons/angle-icon.svg" alt="icon">
   </button>`;
-    let rightBtn = `<button class="ribbon__arrow ribbon__arrow_right">
+    let rightBtn = `<button class="ribbon__arrow ribbon__arrow_right ribbon__arrow_visible">
   <img src="/assets/images/icons/angle-icon.svg" alt="icon">
 </button>`; 
     let list = categories.map((item) => `<a href="#" class="ribbon__item" data-id="${item.id}">${item.name}</a>`);
     let navCont = `<nav class="ribbon__inner">${list.join('')}</nav>`;
-  cont.innerHTML = leftBtn+navCont+rightBtn;
+  cont.innerHTML =rightBtn+navCont+leftBtn;
 
   
 
@@ -33,7 +33,8 @@ export default class RibbonMenu {
     let scrollWidth = ribbonInner.scrollWidth;
     let contWidth = cont.scrollWidth;
     let toLeft = scrollWidth - contWidth;
-    if ( toLeft === scrollLeft) {
+    console.log(scrollLeft,toLeft)
+    if ( scrollLeft === 0) {
       leftBtn1.classList.remove('ribbon__arrow_visible'); 
     }
     if ( toLeft > 0) {
@@ -50,7 +51,7 @@ export default class RibbonMenu {
     if (toLeft >= scrollLeft) {
       leftBtn1.classList.add('ribbon__arrow_visible'); 
     }
-    if (scrollLeft === 0) {
+    if (scrollLeft === toLeft) {
       rightBtn1.classList.remove('ribbon__arrow_visible');
     }  
   });
@@ -64,8 +65,8 @@ export default class RibbonMenu {
     this.classList.add('ribbon__item_active');
     let categoryID = this.getAttribute('data-id');
 
-  let event1 =  new CustomEvent('ribbon-select', { // имя события должно быть именно 'ribbon-select'
-  detail: categoryID, // уникальный идентификатора категории из её объекта
+  let event1 =  new CustomEvent('ribbon-select', {
+  detail: categoryID, 
   bubbles: true
 })
   this.dispatchEvent(event1);

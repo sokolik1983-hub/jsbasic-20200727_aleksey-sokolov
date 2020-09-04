@@ -3,10 +3,12 @@ import createElement from '../../assets/lib/create-element.js';
 export default class Carousel {
   
   constructor(slides) {
+    this.slides = slides;
     this.render(slides);
+    this.onClickBtn(slides);
+    this.onClickSlide(slides);
   }
   render(slides) {
-    this.slides = slides;
     let list = slides.map((item) => `<div class="carousel__slide" data-id="${item.id}">
     <img src="/assets/images/carousel/${item.image}" class="carousel__img" alt="slide">
     <div class="carousel__caption">
@@ -28,60 +30,51 @@ export default class Carousel {
     carousel.innerHTML = arrows;
     let contInner = document.createElement('div');
     contInner.className = 'carousel__inner';
-    
     contInner.innerHTML = list;
     carousel.append(contInner);
-
-    this.elem = carousel;
-    
-
-
-
-
-
-    let rightBtn = carousel.querySelector('.carousel__arrow_right');
-    let leftBtn = carousel.querySelector('.carousel__arrow_left');
-    let contInner1 = carousel.querySelector('.carousel__inner');
-
+    this.elem = carousel;  
+  }
+onClickBtn(slides){
+  let carousel = this.elem ;
+  let rightBtn = carousel.querySelector('.carousel__arrow_right');
+  let leftBtn = carousel.querySelector('.carousel__arrow_left');
+  let contInner1 = carousel.querySelector('.carousel__inner');
   let contInnerStart = 0;
   let currentSlide = 0;
   let allSlides = (contInner1.querySelectorAll('.carousel__slide').length) -1;
-  console.log(allSlides);
-
   if(contInnerStart === currentSlide) {
     leftBtn.style.display = 'none';
   };
 
   leftBtn.addEventListener('click', () => {
-    currentSlide--;
-    let contWidth = carousel.querySelector('.carousel__inner').offsetWidth;
-    let allWidth = -(allSlides*contWidth);
-    contInner1.style.transform = `translateX(${contInnerStart + contWidth}px)`;
-    contInnerStart += contWidth;
-    if(contInnerStart === currentSlide) {
-      leftBtn.style.display = 'none';
-    };
-    if(contInnerStart <= currentSlide) {
-      rightBtn.style.display = 'block';
-    }
-  });
-  rightBtn.addEventListener('click', () => {
-    currentSlide++;
-    let contWidth = carousel.querySelector('.carousel__inner').offsetWidth;
-    let allWidth = -(allSlides*contWidth);
-    contInner1.style.transform = `translateX(${contInnerStart - contWidth}px)`;
-    contInnerStart -= contWidth;
-    if(contInnerStart < currentSlide) {
-      leftBtn.style.display = 'block';
-    };
-    if(contInnerStart === allWidth) {
-      rightBtn.style.display = 'none';
-    };
-  });
-
-
-
-
+  currentSlide--;
+  let contWidth = carousel.querySelector('.carousel__inner').offsetWidth;
+  let allWidth = -(allSlides*contWidth);
+  contInner1.style.transform = `translateX(${contInnerStart + contWidth}px)`;
+  contInnerStart += contWidth;
+  if(contInnerStart === currentSlide) {
+    leftBtn.style.display = 'none';
+  };
+  if(contInnerStart <= currentSlide) {
+    rightBtn.style.display = 'block';
+  }
+});
+rightBtn.addEventListener('click', () => {
+  currentSlide++;
+  let contWidth = carousel.querySelector('.carousel__inner').offsetWidth;
+  let allWidth = -(allSlides*contWidth);
+  contInner1.style.transform = `translateX(${contInnerStart - contWidth}px)`;
+  contInnerStart -= contWidth;
+  if(contInnerStart < currentSlide) {
+    leftBtn.style.display = 'block';
+  };
+  if(contInnerStart === allWidth) {
+    rightBtn.style.display = 'none';
+  };
+});
+}  
+onClickSlide(slides) {
+  let carousel = this.elem ;
   let btn = carousel.querySelectorAll('.carousel__button').forEach(element => element.onclick= function() {
     let parentBox = element.closest('.carousel__slide');
     let parentBoxId = parentBox.getAttribute('data-id');
@@ -91,7 +84,5 @@ export default class Carousel {
   });
     this.dispatchEvent(event1);
   });
-    
-  }
-  
+}
 }
