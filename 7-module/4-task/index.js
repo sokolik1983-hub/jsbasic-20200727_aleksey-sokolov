@@ -104,6 +104,7 @@ export default class StepSlider {
           thumb.style.left = 100 + "%";
           sliderProgress.style.width = 100 + "%";
           countCheck = (steps-1);
+
         }
         sliderValue.textContent = countCheck;
         this.value = countCheck;
@@ -137,4 +138,8 @@ export default class StepSlider {
 
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8137f6e9006ce73decaa947bf4b4a32d939c732a
