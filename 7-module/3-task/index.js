@@ -20,8 +20,12 @@ export default class StepSlider {
       let sliderValue = elem.querySelector('.slider__value');
       let countCheck = clickX/oneStep;
       countCheck = Math.round(countCheck);
-      btn.style.left = (countCheck*oneStep) + "px";
-      sliderProgress.style.left = (countCheck*25)+"%";
+      let segments = steps - 1;
+      let widthPercents = countCheck / segments * 100;
+
+      
+      btn.style.left = widthPercents + "%";
+      sliderProgress.style.width = widthPercents + "%";
       sliderValue.textContent = countCheck;
       
       Array.from(spans).forEach(item => {

@@ -57,7 +57,7 @@ export default class RibbonMenu {
 
   let links = ribbonInner.querySelectorAll('.ribbon__item').forEach(element => element.onclick = function() {
    
-    let links = ribbonInner.querySelectorAll('.ribbon__item');
+    let links = ribbonInner.querySelector('.ribbon__item');
     Array.from(links).forEach(item => {
       item.classList.remove('ribbon__item_active');
     })
